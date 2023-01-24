@@ -29,6 +29,16 @@ def main():
     # Clear the terminal
     subprocess.Popen(["clear"], stdout=subprocess.PIPE)
     print("\nWelcome to the MG GAM tools\n")
+    #MAKE SETUP CLASS IN MISC misc.Setup()
+    misc.Dict_Print(tool_dict)
+    tool = Tool.get(tool_dict)
+    # Change to a case in the future as case switch now exists in Python >=3.10
+    if str(tool) == "move_users_to_new_ou_in_DB":
+        move_users_to_new_ou_in_DB.main()
+    elif str(tool) == "update_assets_in_DB":
+        update_assets_in_DB.main()
+    elif str(tool) == "Exit":
+        misc.exit_message()
     
 
 
