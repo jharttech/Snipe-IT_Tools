@@ -1,5 +1,6 @@
 import subprocess
 from helper_tools import misc
+from db_tools import move_users_to_new_ou_in_DB
 
 
 # Create tool class
@@ -29,7 +30,7 @@ def main():
     # Clear the terminal
     subprocess.Popen(["clear"], stdout=subprocess.PIPE)
     print("\nWelcome to the MG GAM tools\n")
-    #MAKE SETUP CLASS IN MISC misc.Setup()
+    misc.Setup()
     misc.Dict_Print(tool_dict)
     tool = Tool.get(tool_dict)
     # Change to a case in the future as case switch now exists in Python >=3.10
