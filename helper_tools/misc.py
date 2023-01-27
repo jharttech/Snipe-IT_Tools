@@ -20,13 +20,13 @@ class Setup:
         for i in files:
             create = subprocess.Popen(["touch",str(i)], stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL)
 
-def connect_to_db(hostname,dbase,username,passw):
+def connect_to_db(db_info):
     try:
         db = mysql.connector.connect(
-            host = hostname,
-            database = dbase,
-            user = username,
-            password = passw
+            host = db_info[0],
+            database = db_info[1],
+            user = db_info[2],
+            password = db_info[3]
         )
         if db.is_connected():
             return [True,db]
