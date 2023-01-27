@@ -4,7 +4,11 @@ from helper_tools import misc
 
 class Get_Db_Info:
     def __init__(self,db_info):
-        return db_info
+        self.return_info_list(db_info)
+
+    def return_info_list(self,db_info):
+        self.db_info = db_info
+        return self.db_info
 
     @classmethod
     def get(cls):
