@@ -1,3 +1,5 @@
+import subprocess
+import mysql.connector
 # Define the Dict_Print class to print dictionary keys and values in numerical order.  This is not natively done in python3.4
 class Dict_Print:
     def __init__(self, data):
@@ -9,3 +11,25 @@ class Dict_Print:
             print(
                 str(self.data_list[i]) + " : " + self.data.get(str(self.data_list[i]))
             )
+
+
+class Setup:
+    def __init__(self):
+        files = ["logs/error_log.csv","logs/moving_ou_logs.csv"]
+        
+        for i in files:
+            create = subprocess.Popen(["touch",str(i)], stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL)
+
+def connect_to_db(hostname,dbase,username,passw):
+    try:
+        db = mysql.connector.connect(
+            host = hostname,
+            database = dbase,
+            user = username,
+            password = passw
+        )
+        if db.is_connected():
+            return [True,db]
+    except mysql.connector.Error as e:
+        return [e,None]
+        
