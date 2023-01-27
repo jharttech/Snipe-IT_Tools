@@ -5,9 +5,9 @@ from helper_tools import misc
 class Get_Db_Info:
     def __init__(self,hostname,dbase,username,passw):
 
-        self.return_db_info(self.hostname,self.dbase,self.username,self.passw)
+        self.return_db_info(hostname,dbase,username,passw)
 
-    def return_db_info(self,hostname,dbase,username,passwd):
+    def return_db_info(self,hostname,dbase,username,passw):
         return hostname,dbase,username,passw
 
     @classmethod
