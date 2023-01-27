@@ -3,12 +3,8 @@ from helper_tools import misc
 
 
 class Get_Db_Info:
-    def __init__(self,hostname,dbase,username,passw):
-
-        self.return_db_info(hostname,dbase,username,passw)
-
-    def return_db_info(self,hostname,dbase,username,passw):
-        return [hostname,dbase,username,passw]
+    def __init__(self,db_info):
+        return db_info
 
     @classmethod
     def get(cls):
@@ -17,7 +13,8 @@ class Get_Db_Info:
         username = input("\nPlease enter the user for the Database: ")
         # Implenent way to obfuscate
         passw = input("Please enter the Database password: ")
-        return cls(hostname,dbase,username,passw)
+        db_info = [hostname,dbase,username,passw]
+        return cls(db_info)
 
 
 
