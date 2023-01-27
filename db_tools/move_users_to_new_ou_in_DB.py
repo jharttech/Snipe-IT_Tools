@@ -8,7 +8,7 @@ class Get_Db_Info:
 
     def return_info_list(self,db_info):
         self.db_info = db_info
-        return self.db_info
+        return [self.db_info]
 
     @classmethod
     def get(cls):
