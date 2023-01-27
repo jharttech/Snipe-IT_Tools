@@ -4,13 +4,11 @@ from helper_tools import misc
 
 class Get_Db_Info:
     def __init__(self,hostname,dbase,username,passw):
-        self.hostname = hostname
-        self.dbase = dbase
-        self.username = username
-        self.passw = passw
 
-    def return_db_info(self):
-        return self.hostname,self.dbase,self.username,self.passw
+        self.return_db_info(self.hostname,self.dbase,self.username,self.passw)
+
+    def return_db_info(self,hostname,dbase,username,passwd):
+        return hostname,dbase,username,passw
 
     @classmethod
     def get(cls):
@@ -25,7 +23,7 @@ class Get_Db_Info:
 
 def main():
     db_info = Get_Db_Info.get()
-    misc.connect_to_db(db_info[0],db_info[1],db_info[2],db_info[3])
+    misc.connect_to_db(db_info)
 
 
 if __name__ == "__main__":
