@@ -8,7 +8,7 @@ class Get_Db_Info:
         self.return_db_info(hostname,dbase,username,passw)
 
     def return_db_info(self,hostname,dbase,username,passw):
-        return hostname,dbase,username,passw
+        return [hostname,dbase,username,passw]
 
     @classmethod
     def get(cls):
