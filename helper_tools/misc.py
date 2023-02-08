@@ -38,4 +38,13 @@ def connect_to_db():
             return [True,db]
     except mysql.connector.Error as e:
         return [e,None]
+
+def backup_db():
+    filename = input("\nWhat would you like the database backup to be called? ")
+    user = input("\nWhat is the database user name? ")
+    dbase_name = ("\nWhat is the database name? ")
+    with open(filename + ".sql", mode="wb") as file:
+        backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers",dbase_name],stdout=file, stderr=subprocess.PIPE)
+        backup.communicate()
+        backup.wait()
         
