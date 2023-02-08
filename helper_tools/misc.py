@@ -20,7 +20,7 @@ class Setup:
         for i in files:
             create = subprocess.Popen(["touch",str(i)], stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL)
 
-def connect_to_db(db_info):
+def connect_to_db():
     hostname = input("\nPlease enter the host of the Database: ")
     dbase = input("\nPlease enter the database you wish to use: ")
     username = input("\nPlease enter the user for the Database: ")
