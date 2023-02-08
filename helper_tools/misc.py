@@ -42,8 +42,8 @@ def connect_to_db():
 def backup_db():
     filename = input("\nWhat would you like the database backup to be called? ")
     user = input("\nWhat is the database user name? ")
-    dbase_name = ("\nWhat is the database name? ")
-    backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers","--result-file="+filename,dbase_name],stderr=subprocess.PIPE)
+    dbase_name = input("\nWhat is the database name? ")
+    backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers","--result-file="+filename+".sql",dbase_name],stderr=subprocess.PIPE)
     backup.communicate()
     backup.wait()
         
