@@ -6,7 +6,7 @@ from helper_tools import misc
 def main():
     while True:
         backup = input("\nDo you want to back up the database? ").lower()
-        if not re.search(r"^(y|n)$", restart):
+        if not re.search(r"^(y|n)$", backup):
             print("Invalid response please enter 'y' or 'n'")
         else:
             break
