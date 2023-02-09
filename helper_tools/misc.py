@@ -30,17 +30,20 @@ def connect_to_db():
     username = input("\nPlease enter the user for the Database: ")
     # Implenent way to obfuscate
     passw = input("Please enter the Database password: ")
-    db = mysql.connector.connect(
-        host = hostname,
-        database = dbase,
-        user = username,
-        password = passw
-    )
-    if db.is_connected():
-        print("Connection to Database successful!")
-        return db
-    elif not db.is_connected():
-        raise ("ERROR: Could not connect to the database!")
+    try:
+        db = mysql.connector.connect(
+            host = hostname,
+            database = dbase,
+            user = username,
+            password = passw
+        )
+    except mysql.connector.MySQLInterfaceError as e:
+        raise (e)
+    #if db.is_connected():
+        #print("Connection to Database successful!")
+        #return db
+    #elif not db.is_connected():
+        #raise ("ERROR: Could not connect to the database!")
 
 def backup_db():
     user = input("\nWhat is the database user name? ")
