@@ -1,5 +1,9 @@
 import subprocess
 import mysql.connector
+from datetime import date
+
+d = date.isoformat(date.today())
+
 # Define the Dict_Print class to print dictionary keys and values in numerical order.  This is not natively done in python3.4
 class Dict_Print:
     def __init__(self, data):
@@ -40,10 +44,9 @@ def connect_to_db():
         return [e,None]
 
 def backup_db():
-    filename = input("\nWhat would you like the database backup to be called? ")
     user = input("\nWhat is the database user name? ")
     dbase_name = input("\nWhat is the database name? ")
-    backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers","--result-file="+filename+".sql",dbase_name],stderr=subprocess.PIPE)
+    backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers","--result-file="+d+"_"+dbase_name+".sql",dbase_name],stderr=subprocess.PIPE)
     backup.communicate()
     backup.wait()
         
