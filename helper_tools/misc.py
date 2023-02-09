@@ -41,7 +41,7 @@ def connect_to_db():
             print("Connection to Database successful!")
             return [True,db]
     except mysql.connector.Error as e:
-        raise e
+        raise print(e)
 
 def backup_db():
     user = input("\nWhat is the database user name? ")
