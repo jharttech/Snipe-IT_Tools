@@ -38,7 +38,7 @@ def connect_to_db():
             password = passw
         )
     except mysql.connector.errors.Error:
-        raise ("ERROR")
+        print("ERROR")
     #if db.is_connected():
         #print("Connection to Database successful!")
         #return db
