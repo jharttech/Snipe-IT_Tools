@@ -1,6 +1,7 @@
 import subprocess
 import mysql.connector
 from datetime import date
+import getpass
 
 d = date.isoformat(date.today())
 
@@ -29,7 +30,8 @@ def connect_to_db():
     dbase = input("\nPlease enter the database you wish to use: ")
     username = input("\nPlease enter the user for the Database: ")
     # Implenent way to obfuscate
-    passw = input("Please enter the Database password: ")
+    #passw = input("Please enter the Database password: ")
+    passw = getpass.getpass("Please enter the Database Password: ",stream=None)
     try:
         db = mysql.connector.connect(
             host = hostname,
