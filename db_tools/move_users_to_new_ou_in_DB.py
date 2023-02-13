@@ -14,6 +14,7 @@ class Get_Current_Location_Of_Users:
 
     def get_locations(self,cursor,locale_code_to_org_unit_map,org_unit_to_locale_code_map):
         self.cursor = cursor
+        self.cursor.execute("SELECT id, name FROM locations")
         self.records = self.cursor.fetchall()
         self.locale_code_to_org_unit_map = dict(locale_code_to_org_unit_map)
         self.org_unit_to_locale_code_map = dict(org_unit_to_locale_code_map)
