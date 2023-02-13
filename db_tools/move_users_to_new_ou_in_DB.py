@@ -39,9 +39,8 @@ def main():
 
     if backup == "y":
         misc.backup_db()
-    elif backup == "n":
-        connect = misc.connect_to_db()
-        db = connect
+    connect = misc.connect_to_db()
+    db = connect
 
     needed_dicts = Get_Current_Location_Of_Users(db)
     print(needed_dicts[0] + "\n" + needed_dicts[1])
