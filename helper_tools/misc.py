@@ -1,7 +1,6 @@
 import subprocess
-import mysql.connector
 from datetime import date
-import getpass
+
 
 d = date.isoformat(date.today())
 

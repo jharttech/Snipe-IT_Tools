@@ -2,6 +2,7 @@ import subprocess
 import re
 from helper_tools import misc
 import mysql.connector
+import getpass
 
 def connect_to_db():
     hostname = input("\nPlease enter the host of the Database: ")
