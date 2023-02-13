@@ -12,6 +12,7 @@ class Get_Current_Location_Of_Users:
         
         self.get_locations(self.cursor,self.locale_code_to_org_unit_map,self.org_unit_to_locale_code_map)
 
+
     def get_locations(self,cursor,locale_code_to_org_unit_map,org_unit_to_locale_code_map):
         self.cursor = cursor
         self.cursor.execute("SELECT id, name FROM locations")
@@ -26,6 +27,12 @@ class Get_Current_Location_Of_Users:
         if(len(self.locale_code_to_org_unit_map) != 0) and (len(self.org_unit_to_locale_code_map) != 0):
             self.cursor.close()
             return [self.locale_code_to_org_unit_map,self.org_unit_to_locale_code_map]
+
+    def get_locale_code_to_org_unit_map(self):
+        return self.locale_code_to_org_unit_map
+
+    def get_org_unit_to_locale_code_map(self):
+        return self.org_unit_to_locale_code_map
         
     
 
@@ -45,7 +52,9 @@ def main():
     db = connect
 
     needed_dicts = Get_Current_Location_Of_Users(db)
-    print(needed_dicts[0] + "\n" + needed_dicts[1])
+    local_code_to_org_unit_map = needed_dicts.get_locale_code_to_org_unit_map()
+    org_unit_to_locale_code_map = needed_dicts.get_org_unit_to_locale_code_map()
+    print(local_code_to_org_unit_map + "\n" + org_unit_to_locale_code_map)
 
     
 
