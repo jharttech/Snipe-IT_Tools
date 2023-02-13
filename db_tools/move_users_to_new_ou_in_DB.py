@@ -54,7 +54,7 @@ def main():
     needed_dicts = Get_Current_Location_Of_Users(db)
     local_code_to_org_unit_map = needed_dicts.get_locale_code_to_org_unit_map()
     org_unit_to_locale_code_map = needed_dicts.get_org_unit_to_locale_code_map()
-    print(local_code_to_org_unit_map + "\n" + org_unit_to_locale_code_map)
+    print(str(local_code_to_org_unit_map) + "\n" + str(org_unit_to_locale_code_map))
 
     
 
