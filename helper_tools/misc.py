@@ -29,8 +29,6 @@ def connect_to_db():
     hostname = input("\nPlease enter the host of the Database: ")
     dbase = input("\nPlease enter the database you wish to use: ")
     username = input("\nPlease enter the user for the Database: ")
-    # Implenent way to obfuscate
-    #passw = input("Please enter the Database password: ")
     passw = getpass.getpass("Please enter the Database Password: ",stream=None)
     try:
         db = mysql.connector.connect(
