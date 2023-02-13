@@ -3,6 +3,23 @@ import re
 from helper_tools import misc
 import mysql.connector
 
+def connect_to_db():
+    hostname = input("\nPlease enter the host of the Database: ")
+    dbase = input("\nPlease enter the database you wish to use: ")
+    username = input("\nPlease enter the user for the Database: ")
+    passw = getpass.getpass("Please enter the Database Password: ",stream=None)
+    try:
+        db = mysql.connector.connect(
+            host = hostname,
+            database = dbase,
+            user = username,
+            password = passw
+        )
+        print("Connection to the database successful!!")
+        return db
+    except mysql.connector.errors.Error as e:
+        print(e)
+
 
 class Get_Current_Location_Of_Users:
     def __init__(self,db):
@@ -40,7 +57,7 @@ def main():
 
     if backup == "y":
         misc.backup_db()
-    connect = misc.connect_to_db()
+    connect = connect_to_db()
     db = connect
 
     needed_dicts = Get_Current_Location_Of_Users(db)
