@@ -2,6 +2,7 @@ import subprocess
 import re
 from helper_tools import misc
 import mysql.connector
+import os
 
 
 class Get_Current_Location_Of_Users:
@@ -34,6 +35,17 @@ class Get_Current_Location_Of_Users:
     def get_org_unit_to_locale_code_map(self):
         return self.org_unit_to_locale_code_map
         
+
+def write_logs_and_move_user(locale_code_to_org_unit_map,org_unit_to_locale_code_map,db,filename):
+    file = filename
+    line_count = 0
+    error_count = 0
+    moved = 0
+    divider = "#########################"
+    error_file = 'students/error_log.csv'
+    log_file = 'students/moving_ou_logs.csv'
+
+
     
 
 
@@ -50,11 +62,22 @@ def main():
         misc.backup_db()
     connect = misc.connect_to_db()
     db = connect
+    
+    while True:
+        filename = input("\nPlease enter the path and csv file of users you want moved: ")
+        if os.path.isfile(filename):
+            break
+        else:
+            print("\nFile does not exist, please try again!!")
 
     needed_dicts = Get_Current_Location_Of_Users(db)
-    local_code_to_org_unit_map = needed_dicts.get_locale_code_to_org_unit_map()
+    locale_code_to_org_unit_map = needed_dicts.get_locale_code_to_org_unit_map()
     org_unit_to_locale_code_map = needed_dicts.get_org_unit_to_locale_code_map()
-    print(str(local_code_to_org_unit_map) + "\n" + str(org_unit_to_locale_code_map))
+
+    write_logs_and_move_user(locale_code_to_org_unit_map,org_unit_to_locale_code_map,db,filename)
+    
+    
+
 
     
 
