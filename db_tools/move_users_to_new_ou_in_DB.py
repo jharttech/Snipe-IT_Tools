@@ -105,8 +105,10 @@ class Write_Logs_And_Move_User:
                     for x in range(0, self.n_col):
                         self.col_name = str(row[x])
                         if self.col_name == "Location":
+                            print("Location Header Found!")
                             self.org_unit_col = x
                         if self.col_name == "Username":
+                            print("Username Header found!")
                             self.username_col = x
                     self.line_count += 1
                 else:
@@ -121,6 +123,7 @@ class Write_Logs_And_Move_User:
                     )
 
                     if str(self.original_locale_num) == str(self.OU_locale_number):
+                        print("Nothing to move here...")
                         continue
                     elif self.OU_locale_number == None:
                         self.error_count += 1
@@ -161,26 +164,26 @@ class Write_Logs_And_Move_User:
                         )
                         misc.exit_message()
 
-            if self.error_count > 0:
-                print(
-                    """There were some errors in the moving of users to their new OU in the database,
-                Old user OU will remain in use.  Please check the error log for more details
-                (logs/error_log.csv)"""
-                )
-
-                with open(self.error_file, mode="a") as self.needed_file:
-                    self.errors = csv.writer(self.needed_file, delimiter=",")
-                    self.errors.writerow(self.divider)
-            if self.moved > 0:
-                with open(self.log_file, mode="a") as self.needed_file:
-                    self.logs = csv.writer(self.needed_file, delimiter=",")
-                    self.logs.writerow(self.divider)
+        if self.error_count > 0:
             print(
-                str(self.moved)
-                + """ users were moved.
-            All done moving students to new OUs in snipe database.  Thank you!"""
+                """There were some errors in the moving of users to their new OU in the database,
+            Old user OU will remain in use.  Please check the error log for more details
+            (logs/error_log.csv)"""
             )
-            misc.exit_message()
+
+            with open(self.error_file, mode="a") as self.needed_file:
+                self.errors = csv.writer(self.needed_file, delimiter=",")
+                self.errors.writerow(self.divider)
+        if self.moved > 0:
+            with open(self.log_file, mode="a") as self.needed_file:
+                self.logs = csv.writer(self.needed_file, delimiter=",")
+                self.logs.writerow(self.divider)
+        print(
+            str(self.moved)
+            + """ users were moved.
+        All done moving students to new OUs in snipe database.  Thank you!"""
+        )
+        misc.exit_message()
 
 
 class Update_DB:
