@@ -146,7 +146,6 @@ class Write_Logs_And_Move_User:
                     elif str(self.original_locale_num) != str(self.OU_locale_number):
                         self.moved += 1
                         update_db(self.db, self.real_username, self.OU_locale_number)
-                        update_db.wait()
                         self.temp_move_line = (
                             self.timestamp,
                             "user "
