@@ -188,25 +188,22 @@ class Write_Logs_And_Move_User:
         misc.exit_message()
 
 
-class Update_DB:
-    def __init__(self, db, user, location):
-        self.cursor = db.cursor()
-        self.db = db
-        self.user = user
-        self.location = location
+def update_db(db, user, location):
+        cursor = db.cursor()
+        db = db
+        user = user
+        location = location
         print("Fixing to move user...")
-
-    def update(self):
-        #try:
-            self.cursor.execute(
-                "UPDATE users SET location_id=%s WHERE username=%s",
-                (self.location, self.user),
-            )
-            self.db.commit()
-            self.cursor.close()
-        #except mysql.connector.errors.Error as e:
-            #self.cursor.close()
-            #print(e)
+    #try:
+        cursor.execute(
+            "UPDATE users SET location_id=%s WHERE username=%s",
+            (ocation, user),
+        )
+        db.commit()
+        cursor.close()
+    #except mysql.connector.errors.Error as e:
+        #self.cursor.close()
+        #print(e)
 
 
 def get_timestamp():
