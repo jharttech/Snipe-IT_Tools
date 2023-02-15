@@ -235,9 +235,9 @@ def main():
     user_locale = needed_user_locale_dict.get_user_locale_dict()
     print("User locales are " + str(user_locale))
     locale_code_to_org_unit_map = needed_dicts.get_locale_code_to_org_unit_map()
-    print("Locale to Org Unit " + locale_code_to_org_unit_map)
+    print("Locale to Org Unit " + str(locale_code_to_org_unit_map))
     org_unit_to_locale_code_map = needed_dicts.get_org_unit_to_locale_code_map()
-    print("Org unit to Locale " + org_unit_to_locale_code_map)
+    print("Org unit to Locale " + str(org_unit_to_locale_code_map))
 
     Write_Logs_And_Move_User(
         locale_code_to_org_unit_map,
