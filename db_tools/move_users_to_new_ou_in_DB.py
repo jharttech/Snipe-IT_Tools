@@ -198,7 +198,7 @@ def update_db(db, user, location):
     #try:
         cursor.execute(
             "UPDATE users SET location_id=%s WHERE username=%s",
-            (ocation, user),
+            (location, user),
         )
         db.commit()
         cursor.close()
