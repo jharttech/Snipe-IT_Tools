@@ -23,7 +23,7 @@ class Get_Locations:
         self, cursor, locale_code_to_org_unit_map, org_unit_to_locale_code_map
     ):
         self.cursor = cursor
-        print("Now going to gather locations...")
+        print("Now going to gather all possible locations...")
         self.cursor.execute("SELECT id, name FROM locations")
         self.records = self.cursor.fetchall()
         self.locale_code_to_org_unit_map = dict(locale_code_to_org_unit_map)
@@ -56,6 +56,7 @@ class Get_User_Location:
     def get_user_location(self, user_locale, cursor):
         self.cursor = cursor
         self.user_locale = dict(user_locale)
+        print("Now gathering user locations...")
         self.cursor.execute("SELECT location_id, username FROM users")
         self.table_records = self.cursor.fetchall()
 
@@ -232,8 +233,11 @@ def main():
     needed_dicts = Get_Locations(db)
     needed_user_locale_dict = Get_User_Location(db)
     user_locale = needed_user_locale_dict.get_user_locale_dict()
+    print("User locales are " + str(user_locale))
     locale_code_to_org_unit_map = needed_dicts.get_locale_code_to_org_unit_map()
+    print("Locale to Org Unit " + locale_code_to_org_unit_map)
     org_unit_to_locale_code_map = needed_dicts.get_org_unit_to_locale_code_map()
+    print("Org unit to Locale " + org_unit_to_locale_code_map)
 
     Write_Logs_And_Move_User(
         locale_code_to_org_unit_map,
