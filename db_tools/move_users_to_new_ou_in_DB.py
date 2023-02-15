@@ -23,6 +23,7 @@ class Get_Locations:
         self, cursor, locale_code_to_org_unit_map, org_unit_to_locale_code_map
     ):
         self.cursor = cursor
+        print("Now going to gather locations...")
         self.cursor.execute("SELECT id, name FROM locations")
         self.records = self.cursor.fetchall()
         self.locale_code_to_org_unit_map = dict(locale_code_to_org_unit_map)
@@ -65,7 +66,7 @@ class Get_User_Location:
             return self.user_locale
         else:
             self.cursor.close()
-            return "No User Data Found!!"
+            print("No User Data Found!!")
 
     def get_user_locale_dict(self):
         return self.user_locale
