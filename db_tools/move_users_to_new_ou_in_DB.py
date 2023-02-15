@@ -93,7 +93,7 @@ class Write_Logs_And_Move_User:
         self.divider = ["#########################"]
         self.error_file = "logs/error_log.csv"
         self.log_file = "logs/moving_ou_logs.csv"
-        self.timestamp = get_timestamp()
+        self.timestamp = datetime.datetime.now()
 
         self.move_user_and_write_log()
 
@@ -107,10 +107,10 @@ class Write_Logs_And_Move_User:
                     for x in range(0, self.n_col):
                         self.col_name = str(row[x])
                         if self.col_name == "Location":
-                            #print("Location Header Found!")
+                            # print("Location Header Found!")
                             self.org_unit_col = x
                         if self.col_name == "Username":
-                            #print("Username Header found!")
+                            # print("Username Header found!")
                             self.username_col = x
                     self.line_count += 1
                 else:
@@ -125,7 +125,7 @@ class Write_Logs_And_Move_User:
                     )
 
                     if str(self.original_locale_num) == str(self.OU_locale_number):
-                        #print("Nothing to move here...")
+                        # print("Nothing to move here...")
                         continue
                     elif self.OU_locale_number == None:
                         self.error_count += 1
@@ -189,26 +189,23 @@ class Write_Logs_And_Move_User:
 
 
 def update_db(db, user, location):
-        cursor = db.cursor()
-        db = db
-        user = user
-        location = location
-        print("Fixing to move user...")
-    #try:
-        cursor.execute(
-            "UPDATE users SET location_id=%s WHERE username=%s",
-            (location, user),
-        )
-        db.commit()
-        cursor.close()
-    #except mysql.connector.errors.Error as e:
-        #self.cursor.close()
-        #print(e)
+    cursor = db.cursor()
+    db = db
+    user = user
+    location = location
+    print("Fixing to move user...")
+    # try:
+    cursor.execute(
+        "UPDATE users SET location_id=%s WHERE username=%s",
+        (location, user),
+    )
+    db.commit()
+    cursor.close()
 
 
-def get_timestamp():
-    timestamp = datetime.datetime.now()
-    return timestamp
+# except mysql.connector.errors.Error as e:
+# self.cursor.close()
+# print(e)
 
 
 def main():
