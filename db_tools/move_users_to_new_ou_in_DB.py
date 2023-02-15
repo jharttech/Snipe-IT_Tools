@@ -194,18 +194,19 @@ class Update_DB:
         self.db = db
         self.user = user
         self.location = location
+        print("Fixing to move user...")
 
     def update(self):
-        try:
+        #try:
             self.cursor.execute(
                 "UPDATE users SET location_id=%s WHERE username=%s",
                 (self.location, self.user),
             )
             self.db.commit()
             self.cursor.close()
-        except mysql.connector.errors.Error as e:
-            self.cursor.close()
-            print(e)
+        #except mysql.connector.errors.Error as e:
+            #self.cursor.close()
+            #print(e)
 
 
 def get_timestamp():
