@@ -20,10 +20,16 @@ class Dict_Print:
 
 class Setup:
     def __init__(self):
+        dirs = ["logs","database_backups"]
         files = ["logs/error_log.csv","logs/moving_ou_logs.csv"]
+
+        for i in dirs:
+            create_dirs = subprocess.Popen(["mkdir",i], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            create_dirs.wait()
         
         for i in files:
             create = subprocess.Popen(["touch",str(i)], stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL)
+            create.wait()
 
 def connect_to_db():
     hostname = input("\nPlease enter the host of the Database: ")
