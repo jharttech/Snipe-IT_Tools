@@ -95,6 +95,8 @@ class Write_Logs_And_Move_User:
         self.log_file = "logs/moving_ou_logs.csv"
         self.timestamp = get_timestamp()
 
+        self.move_user_and_write_log()
+
     def move_user_and_write_log(self):
         with open(self.file, mode="r") as self.csv_file:
             self.csv_reader = csv.reader(self.csv_file, delimiter=",")
