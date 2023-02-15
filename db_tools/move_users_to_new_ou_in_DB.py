@@ -50,7 +50,7 @@ class Get_User_Location:
         self.user_locale = {}
         self.cursor = db.cursor()
 
-        self.get_user_location(self, self.user_locale, self.cursor)
+        self.get_user_location(self.user_locale, self.cursor)
 
     def get_user_location(self, user_locale, cursor):
         self.cursor = cursor
