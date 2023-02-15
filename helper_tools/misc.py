@@ -55,4 +55,8 @@ def backup_db():
     backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers","--result-file="+d+"_"+dbase_name+".sql",dbase_name],stderr=subprocess.PIPE)
     backup.communicate()
     backup.wait()
+
+
+def exit_message():
+    print("Terminating Program at this time.  Thank you! --JHart")
         
