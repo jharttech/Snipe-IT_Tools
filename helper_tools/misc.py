@@ -46,7 +46,7 @@ def connect_to_db():
         print("Connection to the database successful!!")
         return db
     except mysql.connector.errors.Error as e:
-        print(e)
+        raise e
 
 
 def backup_db():
