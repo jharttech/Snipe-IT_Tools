@@ -53,6 +53,8 @@ def backup_db():
     user = input("\nWhat is the database user name? ")
     dbase_name = input("\nWhat is the database name? ")
     backup = subprocess.Popen(["mysqldump","-u",user,"-p","--routines","--triggers","--result-file="+d+"_"+dbase_name+".sql",dbase_name],stderr=subprocess.PIPE)
+    move_backup = subprocess.Popen(["mv",d+"_"+dbase_name+".sql","database_backups/"],stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
+    move_backup.wait()
     backup.communicate()
     backup.wait()
 
