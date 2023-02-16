@@ -20,7 +20,7 @@ class Dict_Print:
 
 class Setup:
     def __init__(self):
-        dirs = ["logs","database_backups"]
+        dirs = ["logs","database_backups","data_files"]
         files = ["logs/error_log.csv","logs/moving_ou_logs.csv"]
 
         for i in dirs:
