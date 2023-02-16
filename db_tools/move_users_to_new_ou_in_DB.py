@@ -205,7 +205,7 @@ def update_db(db, user, location):
 
     except mysql.connector.errors.Error as e:
         cursor.close()
-        print(e)
+        raise e
 
 
 def main():
