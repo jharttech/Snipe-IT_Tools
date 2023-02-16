@@ -35,7 +35,7 @@ def connect_to_db():
     hostname = input("\nPlease enter the host of the Database: ")
     dbase = input("\nPlease enter the database you wish to use: ")
     username = input("\nPlease enter the user for the Database: ")
-    passw = getpass.getpass("Please enter the Database Password: ",stream=None)
+    passw = getpass.getpass("\nPlease enter the Database Password: ",stream=None)
     try:
         db = mysql.connector.connect(
             host = hostname,
@@ -62,5 +62,5 @@ def backup_db():
 
 
 def exit_message():
-    print("Terminating Program at this time.  Thank you! --JHart")
+    print("\nTerminating Program at this time.  Thank you! --JHart")
         
