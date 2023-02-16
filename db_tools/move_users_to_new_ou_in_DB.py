@@ -194,18 +194,18 @@ def update_db(db, user, location):
     user = user
     location = location
     print("Fixing to move user...")
-    # try:
-    cursor.execute(
-        "UPDATE users SET location_id=%s WHERE username=%s",
-        (location, user),
-    )
-    db.commit()
-    cursor.close()
+    try:
+        cursor.execute(
+            "UPDATE users SET location_id=%s WHERE username=%s",
+            (location, user),
+        )
+        db.commit()
+        cursor.close()
 
 
-# except mysql.connector.errors.Error as e:
-# self.cursor.close()
-# print(e)
+    except mysql.connector.errors.Error as e:
+        cursor.close()
+        print(e)
 
 
 def main():
